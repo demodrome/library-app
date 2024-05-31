@@ -29,7 +29,7 @@ function main() {
 
   ui.add.addEventListener('click', handleAddButton);
   ui.formAdd.addEventListener('click', handleAddNewBook);
-  ui.table.addEventListener('click', handleDeleteBook);
+  ui.table.addEventListener('click', handleTableEvents);
 
   // FUNCTIONS
   /**
@@ -106,8 +106,19 @@ function main() {
 
       // Create a new td element for each property
       for (let property in book) {
+        console.log(property);
         const td = document.createElement('td');
-        td.textContent = book[property];
+        
+        // Add checkbox to show if book has been read
+        if (property === 'isRead') {
+          const checkbox = document.createElement('input');
+          checkbox.setAttribute('type', 'checkbox');
+          checkbox.setAttribute('data-id', library.indexOf(book));
+          checkbox.checked = book[property];
+          td.appendChild(checkbox);
+        } else {
+          td.textContent = book[property];
+        }
 
         tr.appendChild(td);
       }
@@ -153,13 +164,22 @@ function main() {
   }
 
   /**
-   * Handle removal of books from the library
+   * Handle events on the table element
    * @param {Object} event The event object
    */
-  function handleDeleteBook(event) {
-    if (event.target.getAttribute('type') === 'button') {
-      myLibrary.splice(event.target.getAttribute('data-id'), 1);
+  function handleTableEvents(event) {
+    const targetType = event.target.getAttribute('type');
+    const targetId = event.target.getAttribute('data-id');
+
+    // Delete a book entry
+    if (targetType === 'button') {
+      myLibrary.splice(targetId, 1);
       populateTable(myLibrary);
+    }
+
+    // Change book's read status
+    if (targetType === 'checkbox') {
+      myLibrary[targetId].isRead = event.target.checked;
     }
   }
 }
