@@ -29,6 +29,7 @@ function main() {
 
   ui.add.addEventListener('click', handleAddButton);
   ui.formAdd.addEventListener('click', handleAddNewBook);
+  ui.table.addEventListener('click', handleDeleteBook);
 
   // FUNCTIONS
   /**
@@ -64,13 +65,22 @@ function main() {
   }
 
   function populateTable(library) {
+    // Reset table
+    const tableRows = document.querySelectorAll('tr');
+
+    for (let i = 0; i < tableRows.length; i++) {
+      if (i > 0) {
+        tableRows[i].remove();
+      }
+    }
+
     // Add a 'No books found' message if the library is empty
     if (library.length < 1) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
 
       tr.setAttribute('data-no-books', '')
-      td.setAttribute('colspan', 4);
+      td.setAttribute('colspan', 5);
       td.classList.add('none');
       td.textContent = 'No books found...';
 
@@ -102,6 +112,17 @@ function main() {
         tr.appendChild(td);
       }
 
+      // Add remove button
+      const td = document.createElement('td');
+      const deleteButton = document.createElement('button');
+
+      deleteButton.setAttribute('type', 'button');
+      deleteButton.setAttribute('data-id', library.indexOf(book));
+      deleteButton.textContent = 'Remove';
+
+      td.appendChild(deleteButton);
+      tr.appendChild(td);
+
       // Add the row to the table
       ui.table.querySelector('[data-tbody]').appendChild(tr);
     });
@@ -129,6 +150,18 @@ function main() {
 
     addBookToLibrary(myLibrary, bookToAdd);
     populateTable(myLibrary);
+  }
+
+  /**
+   * Handle removal of books from the library
+   * @param {Object} event The event object
+   */
+  function handleDeleteBook(event) {
+    if (event.target.getAttribute('type') === 'button') {
+      myLibrary.splice(event.target.getAttribute('data-id'), 1);
+      populateTable(myLibrary);
+      console.log(myLibrary);
+    }
   }
 }
 
