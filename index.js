@@ -106,7 +106,6 @@ function main() {
 
       // Create a new td element for each property
       for (let property in book) {
-        console.log(property);
         const td = document.createElement('td');
         
         // Add checkbox to show if book has been read
