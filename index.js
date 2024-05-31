@@ -69,6 +69,7 @@ function main() {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
 
+      tr.setAttribute('data-no-books', '')
       td.setAttribute('colspan', 4);
       td.classList.add('none');
       td.textContent = 'No books found...';
@@ -77,6 +78,15 @@ function main() {
       ui.table.querySelector('[data-tbody]').appendChild(tr);
 
       return;
+    }
+
+    // Remove 'No books found' message if present and library is
+    // not empty.
+
+    const noBookMessage = document.querySelector('[data-no-books]');
+
+    if (library.length > 0 && noBookMessage) {
+      noBookMessage.remove();
     }
 
     // Loop over the library and add each book to the interface
