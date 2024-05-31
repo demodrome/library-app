@@ -160,7 +160,6 @@ function main() {
     if (event.target.getAttribute('type') === 'button') {
       myLibrary.splice(event.target.getAttribute('data-id'), 1);
       populateTable(myLibrary);
-      console.log(myLibrary);
     }
   }
 }
