@@ -1,8 +1,22 @@
 // APP ENTRY
 (function main() {
   const myLibrary = [];
+  const ui = getUiComponents();
 
   // FUNCTIONS
+
+  /**
+   * Get the library UI DOM elements
+   * @returns A object containing the DOM interface elements
+   */
+  function getUiComponents() {
+    const components = {
+      table: document.querySelector('[data-library]'),
+      add: document.querySelector('[data-add]'),
+    };
+
+    return components;
+  }
 
   /**
    * Add a book to a library
