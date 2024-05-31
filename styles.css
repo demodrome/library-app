@@ -13,6 +13,23 @@ table {
   width: 100%;
 }
 
+caption {
+  padding: 2rem 0;
+}
+
+thead {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+tbody {
+  background-color: #ffffff;
+}
+
+tr > * {
+  padding: 1rem 1.5rem;
+}
+
 body {
   background-color: #fafafa;
   color: #333333;
