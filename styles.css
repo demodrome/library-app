@@ -38,6 +38,20 @@ body {
   line-height: 1;
 }
 
+section > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+}
+
+header > button {
+  border: 1px solid #8d8d8d;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+}
+
 /* Layout */
 
 .container {
