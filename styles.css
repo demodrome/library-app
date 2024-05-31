@@ -26,6 +26,11 @@ tr > * {
   padding: 1rem 1.5rem;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background-color: #fafafa;
   color: #333333;
@@ -46,6 +51,47 @@ header > button {
   border-radius: 3px;
   cursor: pointer;
   padding: 0.7rem 1rem;
+}
+
+dialog {
+  position: absolute;
+  border-radius: 3px;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  width: 400px;
+  padding: 1rem;
+}
+
+dialog::backdrop {
+  background-color: #000000;
+  opacity: 0.8;
+}
+
+input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+form > input {
+  margin-bottom: 15px;
+}
+
+form > button {
+  display: block;
+  padding: 0.5rem 1rem;
+  margin-top: 20px;
+  margin-left: auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
 }
 
 /* Layout */
