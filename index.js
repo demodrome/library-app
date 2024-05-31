@@ -41,7 +41,6 @@
   function populateTable(library) {
     // Add a 'No books found' message if the library is empty
     if (library.length < 1) {
-      console.log('hi');
       const tr = document.createElement('tr');
       const td = document.createElement('td');
 
