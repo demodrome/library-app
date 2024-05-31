@@ -20,3 +20,10 @@ body {
   font-size: 100%;
   line-height: 1;
 }
+
+/* Layout */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
