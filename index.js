@@ -3,6 +3,13 @@
   const myLibrary = [];
   const ui = getUiComponents();
 
+  const dummy = {
+    author: '1',
+    title: '2',
+    pageCount: 3,
+    isRead: true,
+  };
+
   // FUNCTIONS
 
   /**
@@ -29,6 +36,41 @@
     }
 
     library.push(newBook);
+  }
+
+  function populateTable(library) {
+    // Add a 'No books found' message if the library is empty
+    if (library.length < 1) {
+      console.log('hi');
+      const tr = document.createElement('tr');
+      const td = document.createElement('td');
+
+      td.setAttribute('colspan', 4);
+      td.classList.add('none');
+      td.textContent = 'No books found...';
+
+      tr.appendChild(td);
+      ui.table.querySelector('[data-tbody]').appendChild(tr);
+
+      return;
+    }
+
+    // Loop over the library and add each book to the interface
+    library.forEach(book => {
+      // Create a new tr element for each book
+      const tr = document.createElement('tr');
+
+      // Create a new td element for each property
+      for (let property in book) {
+        const td = document.createElement('td');
+        td.textContent = book[property];
+
+        tr.appendChild(td);
+      }
+
+      // Add the row to the table
+      ui.table.querySelector('[data-tbody]').appendChild(tr);
+    });
   }
 })();
 
