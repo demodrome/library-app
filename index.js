@@ -1,3 +1,26 @@
+// APP ENTRY
+(function main() {
+  const myLibrary = [];
+
+  // FUNCTIONS
+
+  /**
+   * Add a book to a library
+   * @param {Array} library The library array to add the book to
+   * @param {Object} book The book object
+   */
+  function addBookToLibrary(library, book) {
+    const newBook = {
+      ...book,
+    }
+
+    library.push(newBook);
+  }
+})();
+
+
+// CONSTRUCTORS
+
 /**
  * Create a book object
  * @param {Object} config The configuration object for the constructor
