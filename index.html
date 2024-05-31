@@ -8,6 +8,31 @@
   <title>Library App</title>
 </head>
 <body>
-  <h1>Library</h1>
+  <div class="container">
+    <section>
+      <header>
+        <h1>My Library</h1>
+        <button type="button" data-add>Add</button>
+      </header>
+      <table>
+        <caption>
+          <p>Books found in your library.</p>
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Page Count</th>
+            <th scope="col">Finished</th>
+          </tr>
+        </thead>
+        <tbody data-tbody>
+          <tr>
+            <td colspan="4" class="none">No books found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
 </body>
 </html>

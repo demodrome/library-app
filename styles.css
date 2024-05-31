@@ -58,3 +58,9 @@ header > button {
   max-width: 900px;
   margin: 0 auto;
 }
+
+.none {
+  text-align: center;
+  font-style: italic;
+  padding: 2rem 0;
+}
