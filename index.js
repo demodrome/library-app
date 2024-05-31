@@ -25,6 +25,11 @@ function main() {
 
   populateTable(myLibrary);
 
+  // EVENT LISTENERS
+
+  ui.add.addEventListener('click', handleAddButton);
+  ui.formAdd.addEventListener('click', handleAddNewBook);
+
   // FUNCTIONS
   /**
    * Get the library UI DOM elements
@@ -34,6 +39,12 @@ function main() {
     const components = {
       table: document.querySelector('[data-library]'),
       add: document.querySelector('[data-add]'),
+      modal: document.querySelector('[data-modal]'),
+      formTitle: document.querySelector('[data-title]'),
+      formAuthor: document.querySelector('[data-author]'),
+      formPageCount: document.querySelector('[data-page-count]'),
+      formIsRead: document.querySelector('[data-is-read]'),
+      formAdd: document.querySelector('[data-add-book]'),
     };
 
     return components;
@@ -84,6 +95,30 @@ function main() {
       // Add the row to the table
       ui.table.querySelector('[data-tbody]').appendChild(tr);
     });
+  }
+
+  /**
+   * Show 'add new book' modal
+   * @param {Object} event The event object
+   */
+  function handleAddButton(event) {
+    ui.modal.showModal();
+  }
+
+  /**
+   * Handle add book modal form functionality
+   * @param {Object} event The event object
+   */
+  function handleAddNewBook(event) {
+    const bookToAdd = new Book({
+      title: ui.formTitle.value,
+      author: ui.formAuthor.value,
+      pageCount: ui.formPageCount.value,
+      isRead: ui.formIsRead.checked,
+    });
+
+    addBookToLibrary(myLibrary, bookToAdd);
+    populateTable(myLibrary);
   }
 }
 
