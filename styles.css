@@ -26,6 +26,10 @@ tr > * {
   padding: 1rem 1.5rem;
 }
 
+td {
+  text-align: center;
+}
+
 html,
 body {
   height: 100%;
